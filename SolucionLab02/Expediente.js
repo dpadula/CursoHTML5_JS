@@ -61,3 +61,19 @@ function corregirExpedientes(element, array) {
         element.fechaInicio = moment().toDate();
     }
 }
+
+function ordenPorDosCriterios(a, b) {
+    var aPrioridad = a.prioridad;
+    var bPrioridad = b.prioridad;
+    var aFecha = a.fechaInicio;
+    var bFecha = b.fechaInicio;
+    
+    if(aPrioridad == bPrioridad)
+    {
+        return (aFecha < bFecha) ? -1 : (aFecha > bFecha) ? 1 : 0;
+    }
+    else
+    {
+        return (aPrioridad < bPrioridad) ? -1 : 1;
+    }
+}

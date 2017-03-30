@@ -71,6 +71,9 @@ console.log(area2);//[1,3,4,6]
 console.log(area3);//[]
 // console.log(listaExpedientes);
 
+
 console.log(area2.buscarExptePorTipo(tipoPagos));
 
 console.log(area2.buscarExpteDormidos(5));
+
+console.log(listaExpedientes.sort(ordenPorDosCriterios));
