@@ -1,0 +1,58 @@
+header {
+background-color: yellow;
+color: blue;
+padding-left: 20px;
+border-radius: 15px;
+}
+
+header > h1 {
+color: darkslategray;
+} 
+
+section{
+background: -webkit-linear-gradient(left, rgba(226,222,218,0.1), rgba(255,100,0,0.5));
+background: -moz-linear-gradient(right, rgba(226,222,218,0.1), rgba(255,100,0,0.5)); 
+background: linear-gradient(to right, rgba(226,222,218,0.1), rgba(255,100,0,0.5)); 
+}
+
+@import url(http://fonts.googleapis.com/css?family=Righteous);
+
+article{
+margin-left: 25px;
+font-family: 'Righteous', cursive;
+font-weight: 400;
+}
+
+article > h1 {
+border-width: 1px;
+border-style: solid;
+border-image: url(imagenes/border-big-01.png) 30 30 round;   
+}
+
+article > div {
+margin-left: 30px;
+font-family: 'Exo', sans-serif;
+}
+
+footer{
+background-color: #A3B3CC;
+color: #31363D;
+padding-left: 20px;
+font-size: small;
+}
+
+footer > h5 {
+text-align: right;
+}
+
+.rotado7 {
+    -ms-transform: rotate(-7deg); /* IE 9 */
+    -webkit-transform: rotate(-7deg); /* Chrome, Safari, Opera */
+    transform: rotate(-7deg);
+}
+
+.rotado0 {
+    -ms-transform: rotate(0deg); /* IE 9 */
+    -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+    transform: rotate(0deg);
+}
