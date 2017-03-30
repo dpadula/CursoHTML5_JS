@@ -69,4 +69,8 @@ expediente5.pasar(19,area3);//No pasa. Da error
 console.log(area1);//[2]
 console.log(area2);//[1,3,4,6]
 console.log(area3);//[]
-console.log(listaExpedientes);
+// console.log(listaExpedientes);
+
+console.log(area2.buscarExptePorTipo(tipoPagos));
+
+console.log(area2.buscarExpteDormidos(5));

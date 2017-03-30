@@ -25,3 +25,25 @@ Area.prototype.pasarExpte= function(e){
 		this.expedientes.splice(i, 1);
 	}	
 }
+
+Area.prototype.buscarExptePorTipo = function(tipoExpte){
+		return this.expedientes.filter(darTipo(tipoExpte));	
+}
+
+Area.prototype.buscarExpteDormidos = function(dias){
+		return this.expedientes.filter(masDe(dias));	
+}
+
+function darTipo(tipo) {
+    return function(element) {
+        return element.tipo === tipo;
+    }
+}
+
+function masDe(dias) {
+    return function(element) {
+		var calcDias = moment().diff(element.fechaInicio, 'days');
+		// console.log(calcDias);
+		return calcDias >= dias; 
+    }
+}
