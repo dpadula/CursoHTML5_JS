@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="labo04app">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="app.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Prueba Angular</title>
+</head>
+
+<body>
+    <div ng-controller="labo04Controller">
+        <div>{{total}}</div>
+        <p>La mitad del valor de test <span ng-bind="mitadValor"></span></p>
+        <button ng-click="refresh()">Refrescar</button>
+    </div>
+</body>
+
+</html>
