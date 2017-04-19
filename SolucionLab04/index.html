@@ -14,7 +14,12 @@
 <body>
     <div ng-controller="labo04Controller">
         <div>{{total}}</div>
-        <p>La mitad del valor de test <span ng-bind="mitadValor"></span></p>
+        <p ng-class="{'estilo1': paridad, 'estilo2': !paridad }">
+            La mitad del valor de test INICIAL es <span ng-bind="mitadValor"></span>
+            <br>
+            El valor actual redondeado es <span ng-bind="valorActual"></span>
+            <span ng-bind="textoParidad"></span>            
+        </p>
         <button ng-click="refresh()">Refrescar</button>
     </div>
 </body>
