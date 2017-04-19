@@ -16,11 +16,18 @@
         <div>{{total}}</div>
         <p ng-class="{'estilo1': paridad, 'estilo2': !paridad }">
             La mitad del valor de test INICIAL es <span ng-bind="mitadValor"></span>
-            <br>
-            El valor actual redondeado es <span ng-bind="valorActual"></span>
-            <span ng-bind="textoParidad"></span>            
+            <br> El valor actual redondeado es <span ng-bind="valorActual"></span>
+            <span ng-bind="textoParidad"></span>
         </p>
         <button ng-click="refresh()">Refrescar</button>
+        <ul>
+            <li ng-repeat="hist in historial">
+                Valor: {{hist.valor}} : 
+                Valor Redondeado: {{::valorActual}} : 
+                Indice: {{hist.indice}} : 
+                Paridad: {{::textoParidad}}
+            </li>
+        </ul>
     </div>
 </body>
 
