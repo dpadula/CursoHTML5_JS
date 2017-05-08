@@ -1,0 +1,38 @@
+0 - Instalar GIT Bash
+1 - Instalar Node.JS
+2 - Crear carpeta para proyecto (contactlistapp)
+3 - Crear archivo server.js (Para Node y Express)
+4 - Abrir el archivo con cualquier editor (SublimeText o VSCode)
+5 - Abrir consola GIT Bash (se puede usar PowerShell)
+6 - Ir a la carpeta del proyecto "contactlistapp"
+7 - Dentro de la carpeta del proyecto "contactlistapp", instalar con "npm" el Express.js mediante el comando 'npm install express'
+8 - Hacer el require del modulo Express en el archivo server.js
+    8.1- var express = require("express");
+    8.2- var app = express();
+9 - Testeo del server para funcionamiento correcto
+
+app.get('/', function(req, res){
+    res.send("Hola desde servidor Express");    
+});
+
+var portNumber = 3000;
+app.listen(portNumber);
+console.log("Server levantado escuchando en puerto: " + portNumber);
+
+9.1- Iniciar server haciendo "node server" en el directorio donde se encuentra el server.js
+9.2- Se puede instalar el paquete nodemon (npm install -g nodemon https://nodemon.io/)
+
+10 - Crear ruta estatica a folder '/public' en server.js "app.use(express.static(__dirname, '/public'));"
+11 - Crear folder public (sino no existe)
+12 - Agregar al direcotrio public un archivo index.html basico
+13 - Correr el server
+14 - Usar Angular en forma remota CDN, agregandolo al index.html
+15 - Probar angular agregando un input con two-way-binding
+16 - Usar bootstrapp (twitter) de la misma manera que con Angular, mediante CDN
+17 - Probar bootstrap mediante el browser
+18 - Crear diagramado del documento HTML
+19 - Construir una tabla HTML
+20 - Agregar un controller con previa carpeta de Controllers
+21 - Crear el archivo controller.js dentro de la carpeta
+22 - Vincular el script desde el index.html
+23 - 
