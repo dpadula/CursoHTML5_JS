@@ -28,6 +28,13 @@
                     <th>Phone</th>
                 </tr>
             </thead>
+            <tbody>
+                <tr ng-repeat="contact in contactlist">
+                    <td>{{contact.name}} </td>
+                    <td>{{contact.email}} </td>
+                    <td>{{contact.phone}} </td>>
+                </tr>
+            </tbody>
         </table>
     </div>
 

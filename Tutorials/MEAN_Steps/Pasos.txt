@@ -35,4 +35,6 @@ console.log("Server levantado escuchando en puerto: " + portNumber);
 20 - Agregar un controller con previa carpeta de Controllers
 21 - Crear el archivo controller.js dentro de la carpeta
 22 - Vincular el script desde el index.html
-23 - 
+23 - Crear lista de contactos en el controlador y repetirlas en HTML
+24 - Luego quitarlas del controlador y ponerlas del lado del servidor y pedirlas mediante un $http.get
+25 - Download and instalar MongoDB
