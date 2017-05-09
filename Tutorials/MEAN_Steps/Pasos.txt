@@ -75,4 +75,8 @@ app.use(bodyParser.json());
 36 - Los datos se agregan bien pero no se refresca el listado. Hacemos una funcion refrescar
 37 - Agregar boton para quitar contacto de la lista de contactos
     37.1 -  Agregar boton con la funcion pertinente en el index.html
-38 - Agregar 
+38 - Agregar la funcion para remover contactos en el controller
+39 - Agregar solicitud de tipo delete en el controller para enviar el server
+40 - Agregar manejador de la solicitud de tipo delete en el server
+41 - Agregar la sentencia para borrar contactos de la base MongoDB
+42 - 

@@ -2,25 +2,35 @@ var myApp = angular.module('myContactListApp', []);
 myApp.controller('AppCtrl', ['$scope', '$http', function ($scope, $http) {
     console.log("Hello World from controller");
 
-var refresh = function() {
-    $http.get('/contactlist').then(function (response) {
-        console.log("Recibi los datos");
-        console.log(response.data);
-        $scope.contactlist = response.data;
-        $scope.contact = {} ;
-    });
-};
+    var refresh = function () {
+        $http.get('/contactlist').then(function (response) {
+            console.log("Recibi los datos");
+            console.log(response.data);
+            $scope.contactlist = response.data;
+            $scope.contact = {};
+        });
+    };
 
-refresh();
+    refresh();
 
     $scope.addContact = function () {
         console.log("Agregar Contacto");
         console.log($scope.contact);
-        $http.post('/contactlist', $scope.contact).then(function(response){
+        $http.post('/contactlist', $scope.contact).then(function (response) {
             console.log(response);
             refresh();
-        });        
+        });
     };
+
+    $scope.removeContact = function (id) {
+        console.log("Quitar Contacto");
+        console.log(id);
+        $http.delete('/contactlist/' + id).then(function (response) {
+            console.log(response);
+            refresh();
+        });
+
+    };    
 
     //Esto se movio al servidor (server.js) y se pide a traves de una solicitud GET que esta arriba.
     // person1 = {

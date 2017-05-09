@@ -12,7 +12,7 @@ var bodyParser = require('body-parser');
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 
-//Para hacer un get general de todos los resultados
+//Para hacer un GET general de todos los resultados
 app.get('/contactlist', function (req, res) {
     console.log("Recibi una solicitud GET");
     db.contactlist.find(function (err, docs) {
@@ -21,11 +21,21 @@ app.get('/contactlist', function (req, res) {
     })
 });
 
-// Para manejar el post de un contacto
+// Para manejar el POST de un contacto
 app.post('/contactlist', function (req, res) {
     console.log("Recibi una solicitud POST");
     console.log(req.body);
     db.contactlist.insert(req.body, function(err, doc){
+        res.json(doc);
+    });
+});
+
+// Para manejar el DELETE de un contacto
+app.delete('/contactlist/:id', function (req, res) {
+    console.log("Recibi una solicitud DELETE");
+    var id = req.params.id;
+    console.log(id);
+    db.contactlist.remove({_id: mongojs.ObjectId(id)}, function(err, doc){
         res.json(doc);
     });
 });
