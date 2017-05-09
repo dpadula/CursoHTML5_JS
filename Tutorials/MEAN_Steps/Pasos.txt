@@ -19,8 +19,8 @@ var portNumber = 3000;
 app.listen(portNumber);
 console.log("Server levantado escuchando en puerto: " + portNumber);
 
-9.1- Iniciar server haciendo "node server" en el directorio donde se encuentra el server.js
-9.2- Se puede instalar el paquete nodemon (npm install -g nodemon https://nodemon.io/)
+    9.1- Iniciar server haciendo "node server" en el directorio donde se encuentra el server.js
+    9.2- Se puede instalar el paquete nodemon (npm install -g nodemon https://nodemon.io/)
 
 10 - Crear ruta estatica a folder '/public' en server.js "app.use(express.static(__dirname, '/public'));"
 11 - Crear folder public (sino no existe)
@@ -39,4 +39,40 @@ console.log("Server levantado escuchando en puerto: " + portNumber);
 24 - Luego quitarlas del controlador y ponerlas del lado del servidor y pedirlas mediante un $http.get
 25 - Download and instalar MongoDB
 26 - Configurar la base de contactlist en MongoDB. Se puede hacer por consola o por RoboMongo
-27 - 
+27 - Download e instalar MongoJS
+28 - Configurar en Server.JS la base MongoDB (collection) que voy a usar. "contaclist"
+    28.1 - comando 'show dbs' - muestra las bases de datos activas
+    28.2 - comando 'use contactlist' - cambia al contexto de la base de datos 'contactlist' del ejemplo
+    28.3 - comando 'db.contactlist.insert({name:"Diego", email:"lslssls@llalalaal", phone:"1234"})' - inserta un registro
+    28.4 - comando 'db.contactlist.insert([{name:"Diego", email:"lslssls@llalalaal", phone:"1234"},
+                                            {name:"Diego", email:"lslssls@llalalaal", phone:"1234"},
+                                            {name:"Diego", email:"lslssls@llalalaal", phone:"1234"}])' - inserta mas de un registro
+29 - Preparar el index.html para que pueda Obtener y Agregar un registro.
+30 - Preparar el controller para que haga un post al servidor con:
+            $scope.addContact = function(){
+        console.log("Agregar Contacto");
+        console.log($scope.contact);
+        $http.post('/contactlist', $scope.contact);
+    };  
+31 - Preparar el server.js para que maneja el post sobre el contacto.
+app.post('/contactlist', function(req, res){
+    console.log("Recibi una solicitud POST");
+        console.log(req.body);
+});
+32 - Aun no sabemos parsear el req.body, entonces para eso necesitamos body-parser y lo 
+instalamos con npm install body-parser
+33 - Agregar el require de body-parser al server y tambien el uso desde la app
+app.use(bodyParser.json());
+34 - Agregar la sentencia para insertar el nuevo contacto en la MongoDB
+    db.contactlist.find(function (err, docs) {
+        console.log(docs);
+        res.json(docs);
+    })
+35 - Agregar al controller, el manejo de la respuesta al POST
+        $http.post('/contactlist', $scope.contact).then(function(response){
+            console.log(response);
+        });
+36 - Los datos se agregan bien pero no se refresca el listado. Hacemos una funcion refrescar
+37 - Agregar boton para quitar contacto de la lista de contactos
+    37.1 -  Agregar boton con la funcion pertinente en el index.html
+38 - Agregar 
