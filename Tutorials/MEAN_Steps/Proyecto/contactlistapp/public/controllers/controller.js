@@ -19,6 +19,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function ($scope, $http) {
         $http.post('/contactlist', $scope.contact).then(function (response) {
             console.log(response);
             refresh();
+            //TODO: agregar que solamente se habilite el boton cuando algun input tenga datos
         });
     };
 
@@ -30,7 +31,29 @@ myApp.controller('AppCtrl', ['$scope', '$http', function ($scope, $http) {
             refresh();
         });
 
-    };    
+    };
+
+    $scope.editContact = function (id) {
+        console.log("Editar Contacto");
+        console.log(id);
+        $http.get('/contactlist/' + id).then(function (response) {
+            console.log(response);
+            $scope.contact = response.data;
+            //TODO: agregar que cuando selecciones para editar, no se pueda agregar nuevo
+            // y cuando modifiques con update si se pueda
+        });
+    };
+
+    $scope.updateContact = function () {
+        console.log($scope.contact._id);
+        $http.put('/contactlist/' + $scope.contact._id, $scope.contact).then(function (response) {
+            refresh();
+        })
+    };
+
+    $scope.deselect = function () {
+        $scope.contact = {};
+    }
 
     //Esto se movio al servidor (server.js) y se pide a traves de una solicitud GET que esta arriba.
     // person1 = {

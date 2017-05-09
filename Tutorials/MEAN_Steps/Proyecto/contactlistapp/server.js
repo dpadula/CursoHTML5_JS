@@ -39,6 +39,30 @@ app.delete('/contactlist/:id', function (req, res) {
         res.json(doc);
     });
 });
+
+// Para manejar el UPDATE (GET) de un contacto
+app.get('/contactlist/:id', function (req, res) {
+    console.log("Recibi una solicitud GET(UPDATE)");
+    var id = req.params.id;
+    console.log(id);
+    db.contactlist.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
+        res.json(doc);
+    });
+});
+
+// Para manejar el UPDATE (PUT) de un contacto
+app.put('/contactlist/:id', function (req, res) {
+  console.log("Recibi una solicitud PUT(UPDATE)");
+  var id = req.params.id;
+  console.log(req.body.name);
+  db.contactlist.findAndModify({
+    query: {_id: mongojs.ObjectId(id)},
+    update: {$set: {name: req.body.name, email: req.body.email, phone: req.body.phone}},
+    new: true}, function (err, doc) {
+      res.json(doc);
+    });
+});
+
 //IMPORTANTE: Lo de ABAJO que antes estaba en el controller.js y luego ACA, ahora es
 //traido desde la base de datos MongoDB
 
