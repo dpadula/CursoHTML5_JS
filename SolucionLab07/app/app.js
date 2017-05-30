@@ -1,4 +1,32 @@
 angular.module("appExpedientes", ["ngRoute"])
+    .service("areaService", function () {
+        this.areas = [];
+        this.addArea = function (area) {
+            this.areas.push(area);
+            console.log(this.areas);
+        }
+        this.listAreas = function () {
+            return this.areas;
+        }
+        this.removeArea = function(area){
+           console.log(this.areas);
+           console.log(area);
+           var i = this.areas.findIndex(a => {
+                // console.log(a.nombre);
+                return (a.nombre === area.nombre);
+            });
+            console.log("Elemento a borrar es: " + area.nombre + " Con indice: " + i);
+            if(i >= 0)            
+            {
+                this.areas.splice(i, 1);
+                console.log("Elemento con indice: " + i + " borrado.");
+            }
+            else
+            {
+                console.log("No se borró ningun elemento");
+            }
+        }
+    })
     .config(function ($routeProvider) {
         $routeProvider
             .when("/area", {
@@ -8,9 +36,9 @@ angular.module("appExpedientes", ["ngRoute"])
                 templateUrl: "views/listaAreas.html"
             });
     })
-    .controller("areaController", function ($scope) {
+    .controller("areaController", function ($scope, areaService) {
         $scope.titulo = "Gestión de Areas";
-        $scope.listaAreas = [];
+        $scope.listaAreas = areaService.listAreas();
         $scope.area = undefined;
         //$scope.deshabilitarGuardar = true;
         $scope.deshabilitarInput = true;
@@ -29,9 +57,10 @@ angular.module("appExpedientes", ["ngRoute"])
             console.log($scope.area.nombre); //Este nombre viene de ng-model declarativo en HTML
             console.log($scope.listaAreas);
             if ($scope.area && $scope.area.nombre) {
-                $scope.listaAreas.push($scope.area);
+                // $scope.listaAreas.push($scope.area);
+                areaService.addArea($scope.area);                
                 $scope.area = undefined;
-                //$scope.deshabilitarGuardar = (typeof $scope.area === 'undefined' ? true : false);
+                //$scope.deshabilitarGuardar = (typeof $scope.area === 'undefined' ? true : false);                
                 $scope.deshabilitarInput = true;
             } else {
                 $scope.mensaje = "Hubo un problema, el área no puede tener nombre nulo";
@@ -44,25 +73,19 @@ angular.module("appExpedientes", ["ngRoute"])
             console.log($scope.area);
             //$scope.deshabilitarGuardar = (((typeof $scope.area === 'undefined') || !$scope.area.nombre) ? true : false);
             $scope.deshabilitarInput = false;
-            console.log($scope.deshabilitarGuardar);
+            // console.log($scope.deshabilitarGuardar);
         }
         $scope.borrar = function (unArea) {
             // implementa el método findIndex para encontra el indice para un objeto que tenga el atributo nombre 
             // con el mismo nombre del área recibida como parámetro. Cuando lo encuentra lo utiliza en el arreglo con 
             // el método splice para eliminar un elemento
             console.log($scope.listaAreas);
-
-            var i = $scope.listaAreas.findIndex(a => {
-                // console.log(a.nombre);
-                return (a.nombre === unArea.nombre);
-            });
-            console.log("Elemento es: " + unArea.nombre + " Con indice: " + i);
-            var borrar = confirm("Esta a punto de borrar el elemento: " + unArea.nombre + " Con indice: " + i + " Está seguro?");
+            var borrar = confirm("Esta a punto de borrar el elemento: " + unArea.nombre + " Está seguro?");
             if (borrar) {
-                $scope.listaAreas.splice(i, 1);
-                console.log("Se borró el elemento: " + unArea.nombre + " Con indice: " + i);
+                areaService.removeArea(unArea);
+                console.log("Se borró el elemento: " + unArea.nombre);
             } else {
-                console.log("NO se borró el elemento: " + unArea.nombre + " Con indice: " + i);
+                console.log("NO se borró el elemento: " + unArea.nombre);
             }
         }
     });
