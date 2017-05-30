@@ -1,0 +1,22 @@
+{
+  "name": "ng-expedientes",
+  "version": "1.0.0",
+  "description": "Laboratorio 05 - Sist. Gestion Expedientes",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Expedientes",
+    "Lab05",
+    "HTML5",
+    "AngularJS",
+    "UTN"
+  ],
+  "author": "Diego Padula",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-route": "^1.6.4"
+  }
+}
