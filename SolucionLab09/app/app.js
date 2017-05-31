@@ -8,13 +8,18 @@ angular.module("appExpedientes", ["ngRoute"])
             .when('/area/lista', {
                 templateUrl: 'views/listaAreas.html',
                 controller: 'listaAreaController'
-            })
-            .otherwise({ redirectTo: '/area' });
+            })            
+            .when('/area/:idArea', {
+                templateUrl: 'views/datosArea.html',
+                controller: 'areaController'
+            })            
+            .otherwise({ redirectTo: '/area' })
     })
-    .controller("listaAreaController", function ($scope, areaServiceREST) {
+    .controller("listaAreaController", function ($scope, $location, areaServiceREST) {
         // el controlador cuando se inicia carga la lista de áreas
         areaServiceREST.listarAreas().then(
             function (lista) {
+                console.log(lista);
                 $scope.listaAreas = lista;
             }
         );

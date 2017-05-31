@@ -43,13 +43,15 @@ angular.module("appExpedientes")
         };
         // agregar método para BUSCAR TODOS
         servicioRest.listarAreas = function () {
+            // console("tratando de listar");
             $http.get("http://localhost:3000/areas").then(
                 function (result) {
-                    deferred.resolve(result.lista);
+                    console.log(result);
+                    deferred.resolve(result.data);
                 },
                 function (e) {
                     deferred.reject("ERROR");
-                    console.error("ERROR ")
+                    console.error("ERROR ");
                 }
             );
             return deferred.promise;
