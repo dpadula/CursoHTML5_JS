@@ -12,9 +12,14 @@
     <script src="services/areaService.js"></script>
 </head>
 
-<body ng-controller="areaController">
+<body>
+    <!--<body ng-controller="areaController">-->
     <!--<div ng-include="'views/datosArea.html'"></div>
     <div ng-include="'views/listaAreas.html'"></div>-->
+    <div>
+        <a ng-href="#!/area">Area</a>
+        <a ng-href="#!/area/lista">Lista</a>
+    </div>
     <ng-view></ng-view>
 </body>
 

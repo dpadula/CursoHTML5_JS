@@ -1,13 +1,23 @@
 angular.module("appExpedientes", ["ngRoute"])
     .config(function ($routeProvider) {
         $routeProvider
-            .when("/area", {
-                templateUrl: "views/datosArea.html"
+            .when('/area/', {
+                templateUrl: 'views/datosArea.html',
+                controller: 'areaController'
             })
-            .when("/area/lista", {
-                templateUrl: "views/listaAreas.html"
+            .when('/area/lista', {
+                templateUrl: 'views/listaAreas.html',
+                controller: 'listaAreaController'
             })
-            .otherwise({redirectTo: '/area'});
+            .otherwise({ redirectTo: '/area' });
+    })
+    .controller("listaAreaController", function ($scope, areaServiceREST) {
+        // el controlador cuando se inicia carga la lista de áreas
+        areaServiceREST.listarAreas().then(
+            function (lista) {
+                $scope.listaAreas = lista;
+            }
+        );
     })
     .controller("areaController", function ($scope, areaServiceREST) {
         $scope.titulo = "Gestión de Areas";
@@ -30,17 +40,15 @@ angular.module("appExpedientes", ["ngRoute"])
             console.log($scope.area.nombre); //Este nombre viene de ng-model declarativo en HTML
             console.log($scope.listaAreas);
             if ($scope.area && $scope.area.nombre) {
-                // $scope.listaAreas.push($scope.area);
                 areaServiceREST.agregarArea($scope.area)
-                .then(
-                    function(resultado)
-                    {
+                    .then(
+                    function (resultado) {
                         $scope.mensaje = "Se guardo el dato exitosamente";
-                    }, 
-                    function(error){
+                    },
+                    function (error) {
                         $scope.mensaje = "No se guardo el dato";
                     },
-                );                
+                );
                 $scope.area = undefined;
                 //$scope.deshabilitarGuardar = (typeof $scope.area === 'undefined' ? true : false);                
                 $scope.deshabilitarInput = true;
