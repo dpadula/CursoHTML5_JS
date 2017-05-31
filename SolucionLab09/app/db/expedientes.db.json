@@ -1,0 +1,20 @@
+{
+  "areas": [
+    {
+      "nombre": "123",
+      "id": 1
+    },
+    {
+      "nombre": "qwe",
+      "id": 2
+    },
+    {
+      "nombre": "asd",
+      "id": 3
+    },
+    {
+      "nombre": "zxc",
+      "id": 4
+    }
+  ]
+}

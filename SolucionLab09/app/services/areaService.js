@@ -40,7 +40,46 @@ angular.module("appExpedientes")
                 }
             );
             return deferred.promise;
+        };
+        // agregar método para BUSCAR TODOS
+        servicioRest.listarAreas = function () {
+            $http.get("http://localhost:3000/areas").then(
+                function (result) {
+                    deferred.resolve(result.lista);
+                },
+                function (e) {
+                    deferred.reject("ERROR");
+                    console.error("ERROR ")
+                }
+            );
+            return deferred.promise;
+        };
+        // agregar método para BUSCAR POR ID
+        servicioRest.buscarPorID = function (id) {
+            $http.get("http://localhost:3000/areas/" + id).then(
+                function (result) {
+                    deferred.resolve(result.unArea);
+                },
+                function (e) {
+                    deferred.reject("ERROR");
+                    console.error("ERROR ")
+                }
+            );
+            return deferred.promise;
         }
+        // agregar método para ACTUALIZAR UN AREA
+        servicioRest.actualizar = function (unArea) {
+            $http.put("http://localhost:3000/areas/" + unArea.id, unArea).then(
+                function (result) {
+                    deferred.resolve(result.data);
+                },
+                function (e) {
+                    deferred.reject("ERROR");
+                    console.error("ERROR ");
+                }
+            );
+            return deferred.promise;
+        };
         // retornar el objeto servicio construido
         return servicioRest;
     });
