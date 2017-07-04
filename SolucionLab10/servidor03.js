@@ -13,7 +13,7 @@ var server = http.createServer(function (req, res) {
         res.writeHead(200, {
             'content-type': 'text/html'
         });
-        fs.createReadStream('./public/saludo.html').pipe(res);
+        fs.createReadStream('./public/hola.html').pipe(res);
     } else {
         if (req.method == 'GET' && req.url == '/docente') {
             res.writeHead(200, {
