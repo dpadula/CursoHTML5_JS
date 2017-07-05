@@ -1,0 +1,43 @@
+set path=%path%;"c:\Program Files\MongoDB\Server\3.4\bin
+
+C:\>mongo
+MongoDB shell version: 3.4.5
+connecting to: test
+> use demolab13
+switched to db demolab13
+
+
+---/// Ahora probemos realizar 3 inserciones 
+
+> db.people.insert({"nombre":"martin", "codigo": 999})
+WriteResult({ "nInserted" : 1 })
+> db.people.insert({"nombre":"pepe", "codigo": 998})
+WriteResult({ "nInserted" : 1 })
+> db.people.insert({"nombre":"juan", "codigo": 997})
+WriteResult({ "nInserted" : 1 })
+
+---///Ahora probemos realizar 1 búsqueda de todos los elementos insertados
+
+> db.people.find()
+{ "_id" : ObjectId("558e07b71ce1b3d832393c0d"), "nombre" : "martin", "codigo" :
+999 }
+{ "_id" : ObjectId("558e07c71ce1b3d832393c0e"), "nombre" : "pepe", "codigo" : 99
+8 }
+{ "_id" : ObjectId("558e07d31ce1b3d832393c0f"), "nombre" : "juan", "codigo" : 99
+7 }
+
+---/// Ahora probemos actualizar el elemento de código 997
+
+> db.people.update({"codigo":997},{$set:{"nombre":"jhon"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+Ahora busquemos el elemento de código 997 para verificar los nuevos datos
+> db.people.find({"codigo":997})
+{ "_id" : ObjectId("558e07d31ce1b3d832393c0f"), "nombre" : "jhon", "codigo" : 99
+7 }
+>
+
+---/// Ahora borrarlo
+> db.people.remove({"codigo":997})
+
+
+
